@@ -82,6 +82,24 @@ With this package, you can use `useSafeQuery` normally, just like you would use 
 
 Here's an example on how to use `useSafeQuery`.
 
+- First, you'll need to setup your `SafeQueryApolloProvider`:
+
+```
+import { SafeQueryApolloProvider } from 'use-safe-query';
+
+export default function App () {
+  const client = new ApolloClient(...); // Your Apollo Client
+
+  return (
+    <SafeQueryApolloProvider client={client}>
+      ... // The rest of your app
+    </SafeQueryApolloProvider>
+  )
+}
+```
+
+- Then, you can use `useSafeQuery`:
+
 ```
 import useSafeQuery from 'use-safe-query';
 
