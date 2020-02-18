@@ -48,8 +48,21 @@ export default function Component () {
     skip: true,
   });
 
+  const handleRefetch = () => {
+    setLoading(true);
 
+    refetch()
+      .then((payload) => {
+        if (payload && payload.errors) {
+          // show a snackbar notifying the error
+          // e.g. notify("error", payload.errors);
+        }
 
+        // update state with information
+        setData(payload && payload.data);
+        setLoading(false);
+      });
+  };
 
   // execute the query when the component mounts
   useEffect(handleRefetch, []);
