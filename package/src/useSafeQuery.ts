@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 
-// eslint-disable-next-line no-unused-vars
-import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
+import {
+  useQuery,
+  useApolloClient,
+  QueryHookOptions, // eslint-disable-line
+} from '@apollo/react-hooks';
 
 /**
  * Hook that works just like useQuery, but adapts onCompleted and onError to be fired whenever.
@@ -13,12 +16,21 @@ function useSafeQuery(
   query: any,
   options: QueryHookOptions<any, Record<string, any>> | undefined,
 ) {
+  const apolloClient = useApolloClient();
+
+  if (!apolloClient) {
+    throw new Error('You need to declare your <ApolloProvider /> to use this.');
+  }
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(undefined);
   const [data, setData] = useState<any>(undefined);
 
   const queryPayload = useQuery<any, Record<string, any>>(query, {
     ...options,
+
+    // Inject Apollo Client from Context API
+    client: apolloClient,
 
     // Include both "errors" and "data" in query response
     errorPolicy: 'all',
