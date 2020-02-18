@@ -19,7 +19,7 @@ function useSafeQuery(
   const apolloClient = useApolloClient();
 
   if (!apolloClient) {
-    throw new Error('You need to declare your <ApolloProvider /> to use this.');
+    throw new Error('You need to declare your <SafeQueryApolloProviderProps /> and pass down your Apollo Client to use this.');
   }
 
   const [loading, setLoading] = useState<boolean>(true);
