@@ -7,8 +7,7 @@ import { useQuery, QueryHookOptions } from '@apollo/react-hooks';
  * Hook that works just like useQuery, but adapts onCompleted and onError to be fired whenever.
  * It always makes error and data available.
  * @param {Query to be executed.} query
- * @param {Objects to listen for changes.} deps
- * @param {Debounce time.} debounceTime
+ * @param {Query options.} options
  */
 function useSafeQuery(
   query: any,
