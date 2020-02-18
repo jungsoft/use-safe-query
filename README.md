@@ -101,7 +101,7 @@ export default function App () {
 - Then, you can use `useSafeQuery`:
 
 ```
-import useSafeQuery from 'use-safe-query';
+import { useSafeQuery } from 'use-safe-query';
 
 export default function Component () {
   const {
