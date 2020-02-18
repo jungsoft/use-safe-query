@@ -3,6 +3,5 @@ import useSafeQuery from './useSafeQuery';
 
 export {
   SafeQueryApolloProvider,
+  useSafeQuery,
 };
-
-export default useSafeQuery;
