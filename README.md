@@ -126,7 +126,6 @@ export default function Component () {
   }
 
   // do whatever you want with data
-
   return <p>{data}</p>;
 }
 ```
