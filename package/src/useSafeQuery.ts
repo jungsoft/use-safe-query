@@ -39,10 +39,10 @@ function useSafeQuery(
     skip: true,
   });
 
-  const handleRefetch = () => {
+  const handleRefetch = () => new Promise((resolve, reject) => {
     setLoading(true);
 
-    return queryPayload.refetch()
+    queryPayload.refetch()
       .then((result: any) => {
         const newError = result?.errors;
         const newData = result?.data;
@@ -59,8 +59,13 @@ function useSafeQuery(
         if (options?.onError && newError) {
           options.onError(newError);
         }
+
+        resolve(result);
+      })
+      .catch((queryError: any) => {
+        reject(queryError);
       });
-  };
+  });
 
   // Run the query manually when component mounts
   useEffect(() => {

@@ -1,6 +1,6 @@
 {
   "name": "use-safe-query",
-  "version": "1.0.9",
+  "version": "1.0.91",
   "description": "Implementation to adapt @apollo/react-hooks useQuery to use both errors and data callbacks easily",
   "author": "pedro-lb",
   "license": "MIT",
