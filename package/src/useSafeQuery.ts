@@ -39,10 +39,10 @@ function useSafeQuery(
     skip: true,
   });
 
-  const handleRefetch = useCallback(() => new Promise((resolve, reject) => {
+  const handleRefetch = useCallback((variables) => new Promise((resolve, reject) => {
     setLoading(true);
 
-    queryPayload.refetch()
+    queryPayload.refetch(variables)
       .then((result: any) => {
         const newError = result?.errors;
         const newData = result?.data;
@@ -73,7 +73,7 @@ function useSafeQuery(
       return;
     }
 
-    handleRefetch();
+    handleRefetch(options?.variables);
   }, []);
 
   const payload = {
