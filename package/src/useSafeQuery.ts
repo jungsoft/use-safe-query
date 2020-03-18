@@ -47,6 +47,11 @@ function useSafeQuery(
         const newError = result?.errors;
         const newData = result?.data;
 
+        setError(newError);
+        setData(newData);
+
+        setLoading(false);
+
         if (options?.onCompleted) {
           options.onCompleted(newData);
         }
@@ -54,11 +59,6 @@ function useSafeQuery(
         if (options?.onError && newError) {
           options.onError(newError);
         }
-
-        setError(newError);
-        setData(newData);
-
-        setLoading(false);
       });
   };
 
