@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import {
   useQuery,
@@ -39,7 +39,7 @@ function useSafeQuery(
     skip: true,
   });
 
-  const handleRefetch = () => new Promise((resolve, reject) => {
+  const handleRefetch = useCallback(() => new Promise((resolve, reject) => {
     setLoading(true);
 
     queryPayload.refetch()
@@ -65,7 +65,7 @@ function useSafeQuery(
       .catch((queryError: any) => {
         reject(queryError);
       });
-  });
+  }), []);
 
   // Run the query manually when component mounts
   useEffect(() => {
