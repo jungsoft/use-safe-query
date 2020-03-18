@@ -42,7 +42,7 @@ function useSafeQuery(
   const handleRefetch = () => {
     setLoading(true);
 
-    queryPayload.refetch()
+    return queryPayload.refetch()
       .then((result: any) => {
         const newError = result?.errors;
         const newData = result?.data;
@@ -73,6 +73,7 @@ function useSafeQuery(
 
   const payload = {
     ...queryPayload,
+    refetch: handleRefetch,
     loading,
     error,
     data,
