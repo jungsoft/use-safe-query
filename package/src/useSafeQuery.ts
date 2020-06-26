@@ -4,7 +4,7 @@ import {
   useQuery,
   useApolloClient,
   QueryHookOptions, // eslint-disable-line
-} from '@apollo/react-hooks';
+} from 'react-apollo';
 
 /**
  * Hook that works just like useQuery, but adapts onCompleted and onError to be fired whenever.

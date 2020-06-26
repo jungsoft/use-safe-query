@@ -1,6 +1,6 @@
 # use-safe-query
 
-> Implementation to adapt @apollo/react-hooks useQuery to use both errors and data callbacks easily
+> Implementation to adapt useQuery to use both errors and data callbacks easily
 
 [![NPM](https://img.shields.io/npm/v/use-safe-query.svg)](https://www.npmjs.com/package/use-safe-query) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -27,7 +27,7 @@ npm install --save use-safe-query
 
 ## Problem
 
-Upon using @apollo/react-hooks in our projects (latest version, 3.1.3) we noticed an issue: we can't easily access both error and data when a query returns both of these fields.
+Upon using Apollo Client in our projects (latest version, 3.1.3) we noticed an issue: we can't easily access both error and data when a query returns both of these fields.
 
 Currently, we're defining errorPolicy: 'all' in order to store both errors and data, but this way onError is not fired (so we can't have error feedbacks easily) and onCompleted is fired but the payload comes as undefined, even though there is data being returned.
 
