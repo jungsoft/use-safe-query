@@ -1,5 +1,5 @@
-import SafeQueryApolloProvider from './components/SafeQueryApolloProvider/SafeQueryApolloProvider';
-import useSafeQuery from './useSafeQuery';
+import SafeQueryApolloProvider from './components/SafeQueryApolloProvider';
+import useSafeQuery from './hooks/useSafeQuery';
 
 export {
   SafeQueryApolloProvider,
