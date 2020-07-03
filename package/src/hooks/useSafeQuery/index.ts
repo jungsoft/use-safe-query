@@ -73,10 +73,8 @@ function useSafeQuery(
       .catch((queryError: any) => {
         reject(queryError);
       });
-  }), [
-    queryPayload?.refetch,
-    options,
-  ]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), [queryPayload?.refetch]);
 
   // Run the query manually when component mounts
   useDidMount(() => {
