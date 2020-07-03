@@ -41,7 +41,7 @@ function useSafeQuery(
   });
 
   const handleRefetch = useCallback((variables) => new Promise((resolve, reject) => {
-    const { refetch } = queryPayload || {};
+    const refetch = queryPayload?.refetch;
 
     if (!refetch) {
       reject();
@@ -74,7 +74,7 @@ function useSafeQuery(
         reject(queryError);
       });
   }), [
-    queryPayload,
+    queryPayload?.refetch,
     options,
   ]);
 
