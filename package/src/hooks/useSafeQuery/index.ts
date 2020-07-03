@@ -1,10 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 import {
   useQuery,
   useApolloClient,
   QueryHookOptions, // eslint-disable-line
 } from 'react-apollo';
+import useDidMount from '../useDidMount';
 
 /**
  * Hook that works just like useQuery, but adapts onCompleted and onError to be fired whenever.
@@ -72,16 +73,19 @@ function useSafeQuery(
       .catch((queryError: any) => {
         reject(queryError);
       });
-  }), []);
+  }), [
+    queryPayload,
+    options,
+  ]);
 
   // Run the query manually when component mounts
-  useEffect(() => {
+  useDidMount(() => {
     if (options?.skip) {
       return;
     }
 
     handleRefetch(options?.variables);
-  }, []);
+  });
 
   const payload = {
     ...queryPayload,
